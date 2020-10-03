@@ -31,3 +31,9 @@ let seiza month day =
 
 
 let hanbetsushiki a b c = b*b-4.0*a*c
+
+let kaiNoKosu a b c = 
+    let d = hanbetsushiki a b c
+    if      d > 0.0 then 2
+    else if d < 0.0 then 0
+    else                 1
