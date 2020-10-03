@@ -29,5 +29,5 @@ let seiza month day =
     let _, _, _, _, sign = ranges |> List.find(fun (m1, d1, m2, d2, _) -> between m1 d1 m2 d2)
     sign
 
-let date month day =
-    DateTime(2020, month, day)
+
+let hanbetsushiki a b c = b*b-4.0*a*c
