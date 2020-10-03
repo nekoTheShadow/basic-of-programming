@@ -42,3 +42,12 @@ let ``問題5.5 kaiNoKosuは二次方程式ax^2+bx+c=0の解の個数を計算�
 let ``問題5.6 kyosukaiは二次方程式ax^2+bx+c=0が虚数解を持つかどうかを判定する``(a, b, c, expected) = 
     let actual = kyosukai a b c
     Assert.Equal(expected, actual)
+
+[<Theory>]
+[<InlineData(1.6, 100.0, "高度肥満")>]
+[<InlineData(1.6, 70.0, "肥満")>]
+[<InlineData(1.6, 60.0, "標準")>]
+[<InlineData(1.6, 15.0, "やせ")>]
+let ``問題5.7 taikeiはBMIをもとに体形を判定する``(m, kg, expected) = 
+    let actual = taikei m kg
+    Assert.Equal(expected, actual)

@@ -39,3 +39,10 @@ let kaiNoKosu a b c =
     else                 1
 
 let kyosukai a b c = hanbetsushiki a b c < 0.0
+
+let taikei m kg =
+    let bmi = kg/(m**2.0)
+    if      bmi < 18.5 then "やせ"
+    else if bmi < 25.0 then "標準"
+    else if bmi < 30.0 then "肥満"
+    else                    "高度肥満"
