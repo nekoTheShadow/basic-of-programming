@@ -34,3 +34,11 @@ let ``問題5.4 hanbetsushikiは二次方程式ax^2+bx+c=0の判別式の値を�
 let ``問題5.5 kaiNoKosuは二次方程式ax^2+bx+c=0の解の個数を計算する``(a, b, c, expected) = 
     let actual = kaiNoKosu a b c
     Assert.Equal(expected, actual)
+
+[<Theory>]
+[<InlineData(1.0, 5.0, 4.0, false)>]
+[<InlineData(2.0, -4.0, 2.0, false)>]
+[<InlineData(1.0, 2.0, 4.0, true)>]
+let ``問題5.6 kyosukaiは二次方程式ax^2+bx+c=0が虚数解を持つかどうかを判定する``(a, b, c, expected) = 
+    let actual = kyosukai a b c
+    Assert.Equal(expected, actual)

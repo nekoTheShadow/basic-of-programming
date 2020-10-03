@@ -37,3 +37,5 @@ let kaiNoKosu a b c =
     if      d > 0.0 then 2
     else if d < 0.0 then 0
     else                 1
+
+let kyosukai a b c = hanbetsushiki a b c < 0.0
