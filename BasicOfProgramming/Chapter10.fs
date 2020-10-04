@@ -45,8 +45,14 @@ let rec personInsert persons person =
         else
             p :: (personInsert ps person)
 
-
 let rec personSort persons =
     match persons with
     | [] -> []
     | p::ps -> personInsert (personSort ps) p
+
+let rec gakuseiMax students =
+    match students with
+    | [] -> {Namae=""; Tensu=System.Int32.MinValue; Seiseki=""}
+    | s::ss ->
+        let t = gakuseiMax ss
+        if s.Tensu < t.Tensu then t else s

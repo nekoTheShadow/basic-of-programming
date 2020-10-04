@@ -46,3 +46,14 @@ let ``問題10.4 personSortは名前の順番で人間をソートする`` () =
         {Name="B"; Height=1.7; Weight=50.0; Date="2020/02/01"; BloodType="B"};
     ]
     isEqual expected (personSort persons)
+
+[<Fact>]
+let ``問題10.5 gakuseiMaxは最高得点を取った人を探す`` () =
+    let students = [
+        {Namae="D"; Tensu=40; Seiseki="D"};
+        {Namae="A"; Tensu=10; Seiseki="A"};
+        {Namae="E"; Tensu=50; Seiseki="E"};
+        {Namae="C"; Tensu=30; Seiseki="C"};
+        {Namae="B"; Tensu=20; Seiseki="B"};
+    ]
+    Assert.Equal({Namae="E"; Tensu=50; Seiseki="E"}, (gakuseiMax students))
