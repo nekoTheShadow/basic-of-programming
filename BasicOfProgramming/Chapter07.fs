@@ -11,3 +11,5 @@ let seiseki (name, grade) =
    name + "さんの評価は" + grade + "です"
 
 let taishoX (x, y) = (x, -y)
+
+let chuten (x1, y1) (x2, y2) = ((x1+x2)/2.0, (y1+y2)/2.0)

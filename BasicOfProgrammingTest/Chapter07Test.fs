@@ -28,3 +28,12 @@ let ``問題7.3 tasishoXはX軸について対称な点の座標を計算する`
     let (x3, y3) = taishoX (x1, y1)
     Assert.Equal(x2, x3)
     Assert.Equal(y2, y3)
+
+[<Theory>]
+[<InlineData(0.0, 0.0, 1.0, 2.0, 0.5, 1.0)>]
+[<InlineData(2.3, 5.1, 7.6, 1.7, 4.95, 3.4)>]
+[<InlineData(-3.8, -2.4, 3.4, -1.2, -0.2, -1.8)>]
+let ``問題7.4 chutenは2点の中点を計算する`` (x1, y1, x2, y2, x3, y3) =
+    let (x4, y4) = chuten (x1, y1) (x2, y2)
+    Assert.Equal(x3, x4, 2)
+    Assert.Equal(y3, y4, 2)
