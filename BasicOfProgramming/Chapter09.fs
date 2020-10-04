@@ -17,3 +17,8 @@ let rec even lst =
     match lst with
     | [] -> []
     | x::xs -> if x%2 = 0 then x :: even xs else even xs
+
+let rec concat lst =
+    match lst with
+    | [] -> ""
+    | x::xs -> x + concat xs
