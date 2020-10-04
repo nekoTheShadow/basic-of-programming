@@ -54,5 +54,5 @@ let rec gakuseiMax students =
     match students with
     | [] -> {Namae=""; Tensu=System.Int32.MinValue; Seiseki=""}
     | s::ss ->
-        let t = gakuseiMax ss
-        if s.Tensu < t.Tensu then t else s
+        let t = gakuseiMax ss in 
+            if s.Tensu < t.Tensu then t else s

@@ -48,7 +48,7 @@ let ``問題10.4 personSortは名前の順番で人間をソートする`` () =
     isEqual expected (personSort persons)
 
 [<Fact>]
-let ``問題10.5 gakuseiMaxは最高得点を取った人を探す`` () =
+let ``問題10.5/問題10.6 gakuseiMaxは最高得点を取った人を探す`` () =
     let students = [
         {Namae="D"; Tensu=40; Seiseki="D"};
         {Namae="A"; Tensu=10; Seiseki="A"};
