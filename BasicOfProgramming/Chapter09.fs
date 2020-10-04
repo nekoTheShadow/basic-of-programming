@@ -22,3 +22,8 @@ let rec concat lst =
     match lst with
     | [] -> ""
     | x::xs -> x + concat xs
+
+let rec countKetsuekiA persons = 
+    match persons with
+    | [] -> 0
+    | p::ps -> countKetsuekiA ps + (if p.BloodType = "A" then 1 else 0)

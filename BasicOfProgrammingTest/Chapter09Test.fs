@@ -1,6 +1,7 @@
 module Chapter09Test
 
 open Xunit
+open Chapter08
 open Chapter09
 
 let isEqual lst1 lst2 =
@@ -8,7 +9,6 @@ let isEqual lst1 lst2 =
         List.length lst1 = List.length lst2 && List.forall2 (( = )) lst1 lst2, 
         sprintf "expected %A, but actual %A" lst1 lst2
     )
-
 
 type ``問題9-4 lengthはリストの長さを求める`` () =
 
@@ -30,3 +30,11 @@ let ``問題9.5 evenはリストの偶数の要素のみを集めたリストを
 let ``問題9.6 concatはリストを前から順番に結合する`` () =
     Assert.Equal("春夏秋冬", (concat ["春"; "夏"; "秋"; "冬"]))
 
+[<Fact>]
+let ``問題9.7 countKetsuekiAはA型の人間を数える`` () =
+    let persons = [
+        {Name="田中"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="山田"; Height=1.7; Weight=50.0; Date="2020/02/01"; BloodType="B"};
+        {Name="中田"; Height=1.8; Weight=40.0; Date="2020/03/01"; BloodType="O"}; 
+    ]
+    Assert.Equal(1, (countKetsuekiA persons))
