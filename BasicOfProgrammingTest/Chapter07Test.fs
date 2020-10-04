@@ -23,7 +23,7 @@ let ``問題7.2 seisekiは「XXさんの評価はXです」という文字列を
 [<Theory>]
 [<InlineData(1, 1, 1, -1)>]
 [<InlineData(0, 0, 0, 0)>]
-[<InlineData(1, 1, 1, -1)>]
+[<InlineData(1, -1, 1, 1)>]
 let ``問題7.3 tasishoXはX軸について対称な点の座標を計算する`` (x1, y1, x2, y2) =
     let (x3, y3) = taishoX (x1, y1)
     Assert.Equal(x2, x3)
