@@ -1,5 +1,7 @@
 module Chapter10
 
+open Chapter08
+
 let rec insert lst n = 
     match lst with
     | [] -> [n]
@@ -33,3 +35,18 @@ let rec gakuseiSort students =
     match students with 
     | [] -> []
     | x::xs ->  gakuseiInsert (gakuseiSort xs) x
+
+let rec personInsert persons person = 
+    match persons with
+    | [] -> [person]
+    | p::ps -> 
+        if person.Name <= p.Name then 
+            person :: p :: ps
+        else
+            p :: (personInsert ps person)
+
+
+let rec personSort persons =
+    match persons with
+    | [] -> []
+    | p::ps -> personInsert (personSort ps) p
