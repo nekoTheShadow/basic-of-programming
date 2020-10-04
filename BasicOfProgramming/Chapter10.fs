@@ -8,3 +8,8 @@ let rec insert lst n =
            n :: x :: xs
         else
             x :: (insert xs n)
+
+let rec insSort lst =
+    match lst with
+    | [] -> []
+    | x::xs -> insert (insSort xs) x
