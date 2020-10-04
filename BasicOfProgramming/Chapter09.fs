@@ -1,5 +1,6 @@
 module Chapter09
 
+open Chapter05
 open Chapter08
 
 let seasons = "春" :: "夏" :: "秋" :: "冬" ::[]
@@ -27,3 +28,13 @@ let rec countKetsuekiA persons =
     match persons with
     | [] -> 0
     | p::ps -> countKetsuekiA ps + (if p.BloodType = "A" then 1 else 0)
+
+let rec otomeza persons =
+    match persons with
+    | [] -> []
+    | p::ps -> 
+        let date = System.DateTime.ParseExact(p.Date, "yyyy/MM/dd", null)
+        if seiza date.Month date.Day = "おとめ座" then 
+            p.Name :: otomeza ps
+        else 
+            otomeza ps 

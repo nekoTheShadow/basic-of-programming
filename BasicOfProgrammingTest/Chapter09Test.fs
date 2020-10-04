@@ -38,3 +38,12 @@ let ``問題9.7 countKetsuekiAはA型の人間を数える`` () =
         {Name="中田"; Height=1.8; Weight=40.0; Date="2020/03/01"; BloodType="O"}; 
     ]
     Assert.Equal(1, (countKetsuekiA persons))
+
+[<Fact>]
+let ``問題9.8 otomezaはおとめ座の人間を数える`` () =
+    let persons = [
+        {Name="田中"; Height=1.6; Weight=60.0; Date="2020/08/23"; BloodType="A"};
+        {Name="山田"; Height=1.7; Weight=50.0; Date="2020/02/01"; BloodType="B"};
+        {Name="中田"; Height=1.8; Weight=40.0; Date="2020/09/22"; BloodType="O"}; 
+    ]
+    isEqual ["田中"; "中田"] (otomeza persons)
