@@ -10,3 +10,8 @@ open Chapter08
 let ``問題8.4 ketsuekiHyojiは「XXさんの血液型はX型です」という文字列を作成する`` (name, height, weight, date, bloodtype, expected) =
     let actual = ketsuekiHyoji {Name=name; Height=height; Weight=weight; Date=date; BloodType=bloodtype}
     Assert.Equal(expected, actual)
+
+[<Fact>]
+let ``問題8.6 hyojiはEkimeiレコードをPrettyPrintする`` () =
+    let actual = hyoji {Kanji="茗荷谷"; Kana="みょうがたに"; Shozoku="丸の内線"; Romaji="myogadani"}
+    Assert.Equal("丸の内線, 茗荷谷(みょうがたに)", actual)
