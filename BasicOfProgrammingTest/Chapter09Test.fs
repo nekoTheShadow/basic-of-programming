@@ -3,12 +3,7 @@ module Chapter09Test
 open Xunit
 open Chapter08
 open Chapter09
-
-let isEqual lst1 lst2 =
-    Assert.True(
-        List.length lst1 = List.length lst2 && List.forall2 (( = )) lst1 lst2, 
-        sprintf "expected %A, but actual %A" lst1 lst2
-    )
+open Common
 
 type ``問題9-4 lengthはリストの長さを求める`` () =
 
