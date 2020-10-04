@@ -43,7 +43,7 @@ type Ekimei = {
 }
 
 type Ekikan = {
-    Shiten: string;
+    Kiten: string;
     Shuten: string;
     Keiyu: string;
     Kyori: double;
