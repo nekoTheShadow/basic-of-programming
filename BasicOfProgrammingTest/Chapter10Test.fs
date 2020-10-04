@@ -2,7 +2,7 @@ module Chapter10Test
 
 open Xunit
 open Chapter10
-open Common
+open TestUtil
 
 [<Fact>]
 let ``問題10.1 insertは昇順となる位置にnを挿入する`` () =

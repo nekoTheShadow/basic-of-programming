@@ -6,7 +6,8 @@
     <ProjectReference Include="..\BasicOfProgramming\BasicOfProgramming.fsproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.fs" />
+    <Compile Include="TestUtil.fs" />
+    <Compile Include="StationTest.fs" />
     <Compile Include="Chapter04Test.fs" />
     <Compile Include="Chapter05Test.fs" />
     <Compile Include="Chapter07Test.fs" />

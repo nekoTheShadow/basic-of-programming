@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Station.fs" />
     <Compile Include="Chapter04.fs" />
     <Compile Include="Chapter05.fs" />
     <Compile Include="Chapter07.fs" />

@@ -3,7 +3,7 @@ module Chapter09Test
 open Xunit
 open Chapter08
 open Chapter09
-open Common
+open TestUtil
 
 type ``問題9-4 lengthはリストの長さを求める`` () =
 

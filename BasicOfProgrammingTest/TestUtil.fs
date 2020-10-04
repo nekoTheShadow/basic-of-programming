@@ -1,4 +1,4 @@
-module Common
+module TestUtil
 
 open Xunit
 
