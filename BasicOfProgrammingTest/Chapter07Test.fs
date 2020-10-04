@@ -1,4 +1,4 @@
-module Chapter07
+module Chapter07Test
 
 open Xunit
 open Chapter07
