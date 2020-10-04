@@ -9,3 +9,5 @@ let goukeiToHeikin japanese math english science society =
 
 let seiseki (name, grade) = 
    name + "さんの評価は" + grade + "です"
+
+let taishoX (x, y) = (x, -y)
