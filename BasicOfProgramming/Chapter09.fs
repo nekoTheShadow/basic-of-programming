@@ -12,3 +12,8 @@ let rec length lst =
     match lst with
     | [] -> 0
     | first::rest -> 1 + length rest
+
+let rec even lst =
+    match lst with
+    | [] -> []
+    | x::xs -> if x%2 = 0 then x :: even xs else even xs
