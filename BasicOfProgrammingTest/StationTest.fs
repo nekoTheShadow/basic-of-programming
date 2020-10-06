@@ -26,3 +26,7 @@ type ``問題10-10 getEkikanKyoriは駅間リストをもとにふたつの駅�
     [<Fact>]
     let ``ふたつの駅が直接つながっている場合はその距離を返す`` () =
         Assert.Equal(1.0, (getEkikanKyori "代々木上原" "代々木公園" globalEkikanList))
+    
+    [<Fact>]
+    let ``始点と終点が反対でも正しく動くこと`` () =
+        Assert.Equal(1.0, (getEkikanKyori "代々木公園" "代々木上原" globalEkikanList))
