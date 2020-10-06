@@ -89,3 +89,16 @@ let ``問題10.8 saitaKetsuekiはもっとも人数が多い血液型を返す``
         {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="AB"};
     ]
     Assert.Equal("A", (saitaKetsueki persons))
+
+type ``問題10-9 equalLengthはふたつのリストの長さが同じかどうかを判定する`` () =
+    [<Fact>]
+    let ``ひとつめのリストが長い場合はFalse``() =
+        Assert.False(equalLength [1; 1] [3])
+
+    [<Fact>]
+    let ``ふたつめのリストが長い場合はFalse``() =
+        Assert.False(equalLength [1] [2; 3])
+    
+    [<Fact>]
+    let ``同じ長さの場合はTrue``() =
+        Assert.True(equalLength [1; 2; 3] [4; 5; 6])

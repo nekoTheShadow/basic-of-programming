@@ -78,3 +78,12 @@ let saitaKetsueki persons =
     let (a, b, o, ab) = ketsuekiShukei persons in
         let (_, blood) = max [(a, "A"); (b, "B"); (o, "O"); (ab, "AB")]
         blood
+
+let rec equalLength lst1 lst2 =
+    match lst1, lst2 with
+    | [], [] -> true
+    | [], x::xs
+    | x::xs, [] -> false
+    | x::xs, y::ys -> equalLength xs ys
+
+    
