@@ -73,3 +73,19 @@ let ``問題10.6 ketsuekiShukeiは各血液型の人が何人いるのかを数�
         {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="AB"};
     ]
     Assert.Equal((4, 3, 2, 1), (ketsuekiShukei persons))
+
+[<Fact>]
+let ``問題10.8 saitaKetsuekiはもっとも人数が多い血液型を返す`` () =
+    let persons = [
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="O"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="O"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="AB"};
+    ]
+    Assert.Equal("A", (saitaKetsueki persons))

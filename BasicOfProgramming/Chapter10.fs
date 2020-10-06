@@ -65,4 +65,16 @@ let rec ketsuekiShukei persons =
             if      bloodtype = "A" then (a+1, b,   o,   ab  ) 
             else if bloodtype = "B" then (a,   b+1, o,   ab  ) 
             else if bloodtype = "O" then (a,   b,   o+1, ab  ) 
-            else                         (a,   b,   o  , ab+1)   
+            else                         (a,   b,   o  , ab+1)
+
+let saitaKetsueki persons = 
+    let rec max tpls = 
+        match tpls with
+        | [] -> (-1, "")
+        | (v1, s1)::ts -> 
+            let (v2, s2) = max ts in
+                if v1 < v2 then (v2, s2) else (v1, s1)
+    
+    let (a, b, o, ab) = ketsuekiShukei persons in
+        let (_, blood) = max [(a, "A"); (b, "B"); (o, "O"); (ab, "AB")]
+        blood
