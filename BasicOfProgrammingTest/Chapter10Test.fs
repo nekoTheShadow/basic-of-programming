@@ -57,3 +57,19 @@ let ``問題10.5/問題10.6 gakuseiMaxは最高得点を取った人を探す`` 
         {Namae="B"; Tensu=20; Seiseki="B"};
     ]
     Assert.Equal({Namae="E"; Tensu=50; Seiseki="E"}, (gakuseiMax students))
+
+[<Fact>]
+let ``問題10.6 ketsuekiShukeiは各血液型の人が何人いるのかを数える`` () =
+    let persons = [
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="O"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="O"};
+        {Name="A"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="AB"};
+    ]
+    Assert.Equal((4, 3, 2, 1), (ketsuekiShukei persons))

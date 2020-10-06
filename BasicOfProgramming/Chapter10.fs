@@ -56,3 +56,13 @@ let rec gakuseiMax students =
     | s::ss ->
         let t = gakuseiMax ss in 
             if s.Tensu < t.Tensu then t else s
+
+let rec ketsuekiShukei persons =
+    match persons with
+    | [] -> (0, 0, 0, 0)
+    | {BloodType=bloodtype}::ps ->
+        let (a, b, o, ab) = (ketsuekiShukei ps) in
+            if      bloodtype = "A" then (a+1, b,   o,   ab  ) 
+            else if bloodtype = "B" then (a,   b+1, o,   ab  ) 
+            else if bloodtype = "O" then (a,   b,   o+1, ab  ) 
+            else                         (a,   b,   o  , ab+1)   
