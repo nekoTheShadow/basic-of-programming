@@ -31,3 +31,16 @@ type ``問題10-11 getEkikanKyoriは駅間リストをもとにふたつの駅�
     let ``始点と終点が反対でも正しく動くこと`` () =
         Assert.Equal(1.0, (getEkikanKyori "代々木公園" "代々木上原" globalEkikanList))
 
+type ``問題10-12 kyoriWoHyojiは2駅間の距離についてPretty Printする`` () =
+    [<Fact>]
+    let ``2つの駅が直接つながっている場合「A駅からB駅まではCkmです」を返す`` () =
+        Assert.Equal("代々木上原駅から代々木公園駅までは1.0kmです", (kyoriWoHyoji "yoyogiuehara" "yoyogikouen" globalEkimeiList globalEkikanList))
+    [<Fact>]
+    let ``2つの駅が直接つながっていない場合「A駅とB駅はつながっていません」を返す`` () =
+        Assert.Equal("代々木上原駅と明治神宮前駅はつながっていません", (kyoriWoHyoji "yoyogiuehara" "meijijinguumae" globalEkimeiList globalEkikanList))
+    [<Fact>]
+    let ``A駅が存在しない場合「Aという駅は存在しません」を返す`` () =
+        Assert.Equal("XXXという駅は存在しません", (kyoriWoHyoji "XXX" "meijijinguumae" globalEkimeiList globalEkikanList))
+    [<Fact>]
+    let ``B駅が存在しない場合「Bという駅は存在しません」を返す`` () =
+        Assert.Equal("YYYという駅は存在しません", (kyoriWoHyoji "meijijinguumae" "YYY" globalEkimeiList globalEkikanList))

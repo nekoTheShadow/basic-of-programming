@@ -32,6 +32,19 @@ let rec getEkikanKyori kanji1 kanji2 ekikanList =
         else
             getEkikanKyori kanji1 kanji2 es
             
+let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList = 
+    let kanji1 = romajiToKanji romaji1 ekimeiList in
+    let kanji2 = romajiToKanji romaji2 ekimeiList in
+        if kanji1="" then 
+            sprintf "%sという駅は存在しません" romaji1
+        else if kanji2="" then
+            sprintf "%sという駅は存在しません" romaji2
+        else 
+            let kyori = getEkikanKyori kanji1 kanji2 ekikanList in
+                if kyori = infinity then 
+                    sprintf "%s駅と%s駅はつながっていません" kanji1 kanji2
+                else 
+                    sprintf "%s駅から%s駅までは%0.1fkmです" kanji1 kanji2 kyori
 
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
