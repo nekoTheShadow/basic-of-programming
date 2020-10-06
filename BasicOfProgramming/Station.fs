@@ -18,6 +18,21 @@ type Ekikan = {
 let hyoji ekimei =
     sprintf "%s, %s(%s)" ekimei.Shozoku ekimei.Kanji ekimei.Kana
 
+let rec romajiToKanji romaji ekimeiList =
+    match ekimeiList with
+    | [] -> ""
+    | e::es -> if e.Romaji = romaji then e.Kanji else (romajiToKanji romaji es)
+
+let rec getEkikanKyori kanji1 kanji2 ekikanList =
+    match ekikanList with
+    | [] -> infinity
+    | {Kiten=kiten; Shuten=shuten; Kyori=kyori}::es -> 
+        if (kiten=kanji1 && shuten=kanji2) || (kiten=kanji2 && shuten=kanji1) then
+            kyori
+        else
+            getEkikanKyori kanji1 kanji2 es
+            
+
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
     {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
