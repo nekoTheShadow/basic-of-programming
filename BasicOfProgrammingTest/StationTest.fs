@@ -21,7 +21,7 @@ type ``問題10-10 romajiToKanjiは駅名リストをもとにローマ字表記
 type ``問題10-11 getEkikanKyoriは駅間リストをもとにふたつの駅の距離を求める`` () =
     [<Fact>]
     let ``ふたつの駅が直接つながっていない場合はinfinityを返す`` () =
-        Assert.Equal(infinity, (getEkikanKyori "代々木上原" "明治神宮" globalEkikanList))
+        Assert.Equal(infinity, (getEkikanKyori "代々木上原" "明治神宮前駅" globalEkikanList))
     
     [<Fact>]
     let ``ふたつの駅が直接つながっている場合はその距離を返す`` () =
