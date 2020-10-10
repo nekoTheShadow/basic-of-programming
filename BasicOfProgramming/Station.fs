@@ -424,3 +424,6 @@ let koushin1 p q =
         match p.TemaeList with
         | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
         | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
+
+let koushin p v =
+    List.map (koushin1 p) v

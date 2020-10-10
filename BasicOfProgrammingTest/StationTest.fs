@@ -105,4 +105,16 @@ type ``問題13-6 koushin1はqの情報を更新する`` () =
         let r = {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木上原"; "茗荷谷"]}
         Assert.Equal(r, (koushin1 p q))
 
+[<Fact>]
+let ``問題13.7 koushinは未確定の駅のリストvに対して更新処理を行う``() =
+    let p = {Namae="代々木上原"; SaitanKyori=1.0; TemaeList=["茗荷谷"]}
+    let v = [
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]}
+        {Namae="代々木公園"; SaitanKyori=infinity; TemaeList=[]}
+    ]
+    let expected = [
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木上原"; "茗荷谷"]};
+    ]
+    isEqual expected (koushin p v)
 
