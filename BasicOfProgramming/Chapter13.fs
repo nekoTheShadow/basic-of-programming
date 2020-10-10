@@ -10,3 +10,6 @@ let rec countKetsueki persons bloodType =
            1 + (countKetsueki ps bloodType)
         else 
             countKetsueki ps bloodType
+
+let personNamae persons = 
+    List.map (fun p -> p.Name) persons
