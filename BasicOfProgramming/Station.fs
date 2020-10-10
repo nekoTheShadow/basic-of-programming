@@ -80,6 +80,15 @@ let rec seiretsu ekimeiList =
     | [] -> []
     | e::es -> ekimeiInsert (seiretsu es) e
 
+let koushin1 p q ekimeiList =
+    let kyori = getEkikanKyori p.Namae q.Namae ekimeiList in
+    if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
+        q
+    else
+        match p.TemaeList with
+        | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
+        | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
+
 
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
