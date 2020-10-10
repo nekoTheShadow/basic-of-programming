@@ -55,6 +55,14 @@ let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList =
 let makeEkiList ekimeiList =
     List.map (fun ekimei -> {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}) ekimeiList
 
+let rec shokika ekimeiList kiten =
+    match ekimeiList with
+    | [] -> []
+    | e::es -> 
+        if e.Namae = kiten then
+            {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]}::es
+        else
+            e::(shokika es kiten)
 
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 

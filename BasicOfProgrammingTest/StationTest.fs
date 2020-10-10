@@ -58,3 +58,16 @@ let ``makeEkiListはEkimeiのリストからEkiのリストを作成する``() =
         {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
     ]
     isEqual expected (makeEkiList ekimeiList)
+
+let ``問題12.3 shokikaはEkimeiリストを初期化する``() = 
+    let ekimeiList = [
+        {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="代々木公園"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
+    ]
+    let expected = [
+        {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="代々木公園"; SaitanKyori=0.0; TemaeList=[]};
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
+    ]
+    isEqual expected (shokika ekimeiList "代々木公園")
