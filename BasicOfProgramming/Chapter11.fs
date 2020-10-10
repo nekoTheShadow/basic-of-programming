@@ -6,4 +6,8 @@ let rec sumOfSquare n =
     else 
         (n * n) + sumOfSquare (n - 1)
 
- 
+let rec a n =
+    if n = 0 then
+        3
+    else 
+        2*a(n-1)-1
