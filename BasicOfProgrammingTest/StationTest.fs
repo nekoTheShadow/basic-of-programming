@@ -75,3 +75,18 @@ let ``問題12.3 shokikaはEkimeiリストを初期化する``() =
     isEqual expected (shokika ekimeiList "代々木公園")
 
 
+[<Fact>]
+let ``問題12.4 seirtsuはEkimeiリストをひらがなの順番に並べ替えて重複を取り除く``() =
+    let ekimeiList = [
+        {Kanji="1"; Kana="C"; Romaji="1"; Shozoku="1"}; 
+        {Kanji="2"; Kana="A"; Romaji="2"; Shozoku="2"};
+        {Kanji="3"; Kana="B"; Romaji="3"; Shozoku="3"};
+        {Kanji="4"; Kana="A"; Romaji="4"; Shozoku="4"};
+        {Kanji="5"; Kana="B"; Romaji="5"; Shozoku="5"};
+    ]
+    let expected = [
+        {Kanji="4"; Kana="A"; Romaji="4"; Shozoku="4"};
+        {Kanji="5"; Kana="B"; Romaji="5"; Shozoku="5"};
+        {Kanji="1"; Kana="C"; Romaji="1"; Shozoku="1"}; 
+    ]
+    isEqual expected (seiretsu ekimeiList)

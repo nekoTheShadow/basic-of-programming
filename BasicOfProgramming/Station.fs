@@ -63,6 +63,23 @@ let rec shokika ekimeiList kiten =
             {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]}::es
         else
             e::(shokika es kiten)
+ 
+let rec ekimeiInsert ekimeiList ekimei =
+    match ekimeiList with
+    | [] -> [ekimei]
+    | e::es -> 
+        if ekimei.Kana = e.Kana then
+            ekimeiList
+        else if ekimei.Kana < e.Kana then
+            ekimei::ekimeiList
+        else
+            e::(ekimeiInsert es ekimei)
+
+let rec seiretsu ekimeiList =
+    match ekimeiList with
+    | [] -> []
+    | e::es -> ekimeiInsert (seiretsu es) e
+
 
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
