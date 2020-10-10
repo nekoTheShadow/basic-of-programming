@@ -46,7 +46,7 @@ type ``問題10-12 kyoriWoHyojiは2駅間の距離についてPretty Printする
     let ``B駅が存在しない場合「Bという駅は存在しません」を返す`` () =
         Assert.Equal("YYYという駅は存在しません", (kyoriWoHyoji "meijijinguumae" "YYY" globalEkimeiList globalEkikanList))
 
-let ``makeEkiListはEkimeiのリストからEkiのリストを作成する``() =
+let ``問題12.2 makeEkiListはEkimeiのリストからEkiのリストを作成する``() =
     let ekimeiList = [
         {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
         {Kanji="代々木公園"; Kana="よよぎこうえん"; Romaji="yoyogikouen"; Shozoku="千代田線"}; 
