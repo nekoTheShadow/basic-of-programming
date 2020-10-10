@@ -1,7 +1,7 @@
 module Chapter09Test
 
 open Xunit
-open Chapter08
+open Person
 open Chapter09
 open TestUtil
 

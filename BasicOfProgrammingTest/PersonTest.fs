@@ -1,7 +1,7 @@
-module Chapter08Test
+module PersonTest
 
 open Xunit
-open Chapter08
+open Person
 
 [<Theory>]
 [<InlineData("山田", 1.7, 60.0, "2000/02/01", "B", "山田さんの血液型はB型です")>]

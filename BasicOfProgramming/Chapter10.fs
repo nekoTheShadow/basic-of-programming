@@ -1,6 +1,7 @@
 module Chapter10
 
 open Chapter08
+open Person
 
 let rec insert lst n = 
     match lst with

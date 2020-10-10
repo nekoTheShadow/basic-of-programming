@@ -1,7 +1,7 @@
 module Chapter09
 
 open Chapter05
-open Chapter08
+open Person
 
 let seasons = "春" :: "夏" :: "秋" :: "冬" ::[]
 let persons = {Name="田中"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="A"} ::

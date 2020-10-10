@@ -2,7 +2,7 @@ module Chapter10Test
 
 open Xunit
 open Chapter10
-open Chapter08
+open Person
 open TestUtil
 
 [<Fact>]
