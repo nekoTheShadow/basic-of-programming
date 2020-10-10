@@ -15,6 +15,12 @@ type Ekikan = {
     Jikan: int
 }
 
+type Eki = {
+    Namae: string;
+    SaitanKyori: double;
+    TemaeList : string list;
+}
+
 let hyoji ekimei =
     sprintf "%s, %s(%s)" ekimei.Shozoku ekimei.Kanji ekimei.Kana
 
