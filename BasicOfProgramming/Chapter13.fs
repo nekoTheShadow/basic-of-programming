@@ -23,3 +23,6 @@ let f5 f g x = g (f x)
 
 let compose f g = 
     let h x = f (g x) in h
+
+let twice f = let g x = f (f x) in g
+let twice2 = let f x = twice twice x in f
