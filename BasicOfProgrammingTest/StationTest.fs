@@ -46,6 +46,7 @@ type ``問題10-12 kyoriWoHyojiは2駅間の距離についてPretty Printする
     let ``B駅が存在しない場合「Bという駅は存在しません」を返す`` () =
         Assert.Equal("YYYという駅は存在しません", (kyoriWoHyoji "meijijinguumae" "YYY" globalEkimeiList globalEkikanList))
 
+[<Fact>]
 let ``問題12.2 makeEkiListはEkimeiのリストからEkiのリストを作成する``() =
     let ekimeiList = [
         {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
@@ -59,6 +60,7 @@ let ``問題12.2 makeEkiListはEkimeiのリストからEkiのリストを作成�
     ]
     isEqual expected (makeEkiList ekimeiList)
 
+[<Fact>]
 let ``問題12.3 shokikaはEkimeiリストを初期化する``() = 
     let ekimeiList = [
         {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]};
@@ -71,3 +73,5 @@ let ``問題12.3 shokikaはEkimeiリストを初期化する``() =
         {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
     ]
     isEqual expected (shokika ekimeiList "代々木公園")
+
+
