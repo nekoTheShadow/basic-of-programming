@@ -2,6 +2,7 @@ module StationTest
 
 open Xunit
 open Station
+open TestUtil
 
 [<Fact>]
 let ``問題8.6 hyojiはEkimeiレコードをPrettyPrintする`` () =
@@ -44,3 +45,16 @@ type ``問題10-12 kyoriWoHyojiは2駅間の距離についてPretty Printする
     [<Fact>]
     let ``B駅が存在しない場合「Bという駅は存在しません」を返す`` () =
         Assert.Equal("YYYという駅は存在しません", (kyoriWoHyoji "meijijinguumae" "YYY" globalEkimeiList globalEkikanList))
+
+let ``makeEkiListはEkimeiのリストからEkiのリストを作成する``() =
+    let ekimeiList = [
+        {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
+        {Kanji="代々木公園"; Kana="よよぎこうえん"; Romaji="yoyogikouen"; Shozoku="千代田線"}; 
+        {Kanji="明治神宮前"; Kana="めいじじんぐうまえ"; Romaji="meijijinguumae"; Shozoku="千代田線"};  
+    ]
+    let expected = [
+        {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="代々木公園"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
+    ]
+    isEqual expected (makeEkiList ekimeiList)

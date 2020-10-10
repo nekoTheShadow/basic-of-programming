@@ -52,6 +52,10 @@ let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList =
                 else 
                     sprintf "%s駅から%s駅までは%0.1fkmです" kanji1 kanji2 kyori
 
+let makeEkiList ekimeiList =
+    List.map (fun ekimei -> {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}) ekimeiList
+
+
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
     {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
