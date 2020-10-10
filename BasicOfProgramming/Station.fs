@@ -21,75 +21,6 @@ type Eki = {
     TemaeList : string list;
 }
 
-let hyoji ekimei =
-    sprintf "%s, %s(%s)" ekimei.Shozoku ekimei.Kanji ekimei.Kana
-
-let rec romajiToKanji romaji ekimeiList =
-    match ekimeiList with
-    | [] -> ""
-    | e::es -> if e.Romaji = romaji then e.Kanji else (romajiToKanji romaji es)
-
-let rec getEkikanKyori kanji1 kanji2 ekikanList =
-    match ekikanList with
-    | [] -> infinity
-    | {Kiten=kiten; Shuten=shuten; Kyori=kyori}::es -> 
-        if (kiten=kanji1 && shuten=kanji2) || (kiten=kanji2 && shuten=kanji1) then
-            kyori
-        else
-            getEkikanKyori kanji1 kanji2 es
-            
-let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList = 
-    let kanji1 = romajiToKanji romaji1 ekimeiList in
-    let kanji2 = romajiToKanji romaji2 ekimeiList in
-        if kanji1="" then 
-            sprintf "%sという駅は存在しません" romaji1
-        else if kanji2="" then
-            sprintf "%sという駅は存在しません" romaji2
-        else 
-            let kyori = getEkikanKyori kanji1 kanji2 ekikanList in
-                if kyori = infinity then 
-                    sprintf "%s駅と%s駅はつながっていません" kanji1 kanji2
-                else 
-                    sprintf "%s駅から%s駅までは%0.1fkmです" kanji1 kanji2 kyori
-
-let makeEkiList ekimeiList =
-    List.map (fun ekimei -> {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}) ekimeiList
-
-let rec shokika ekimeiList kiten =
-    match ekimeiList with
-    | [] -> []
-    | e::es -> 
-        if e.Namae = kiten then
-            {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]}::es
-        else
-            e::(shokika es kiten)
- 
-let rec ekimeiInsert ekimeiList ekimei =
-    match ekimeiList with
-    | [] -> [ekimei]
-    | e::es -> 
-        if ekimei.Kana = e.Kana then
-            ekimeiList
-        else if ekimei.Kana < e.Kana then
-            ekimei::ekimeiList
-        else
-            e::(ekimeiInsert es ekimei)
-
-let rec seiretsu ekimeiList =
-    match ekimeiList with
-    | [] -> []
-    | e::es -> ekimeiInsert (seiretsu es) e
-
-let koushin1 p q ekimeiList =
-    let kyori = getEkikanKyori p.Namae q.Namae ekimeiList in
-    if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
-        q
-    else
-        match p.TemaeList with
-        | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
-        | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
-
-
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
     {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
@@ -425,3 +356,71 @@ let globalEkikanList = [
     {Kiten="営団赤塚"; Shuten="営団成増"; Keiyu="有楽町線"; Kyori=1.5; Jikan=2}; 
     {Kiten="営団成増"; Shuten="和光市"; Keiyu="有楽町線"; Kyori=2.1; Jikan=3}; 
 ] 
+
+let hyoji ekimei =
+    sprintf "%s, %s(%s)" ekimei.Shozoku ekimei.Kanji ekimei.Kana
+
+let rec romajiToKanji romaji ekimeiList =
+    match ekimeiList with
+    | [] -> ""
+    | e::es -> if e.Romaji = romaji then e.Kanji else (romajiToKanji romaji es)
+
+let rec getEkikanKyori kanji1 kanji2 ekikanList =
+    match ekikanList with
+    | [] -> infinity
+    | {Kiten=kiten; Shuten=shuten; Kyori=kyori}::es -> 
+        if (kiten=kanji1 && shuten=kanji2) || (kiten=kanji2 && shuten=kanji1) then
+            kyori
+        else
+            getEkikanKyori kanji1 kanji2 es
+            
+let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList = 
+    let kanji1 = romajiToKanji romaji1 ekimeiList in
+    let kanji2 = romajiToKanji romaji2 ekimeiList in
+        if kanji1="" then 
+            sprintf "%sという駅は存在しません" romaji1
+        else if kanji2="" then
+            sprintf "%sという駅は存在しません" romaji2
+        else 
+            let kyori = getEkikanKyori kanji1 kanji2 ekikanList in
+                if kyori = infinity then 
+                    sprintf "%s駅と%s駅はつながっていません" kanji1 kanji2
+                else 
+                    sprintf "%s駅から%s駅までは%0.1fkmです" kanji1 kanji2 kyori
+
+let makeEkiList ekimeiList =
+    List.map (fun ekimei -> {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}) ekimeiList
+
+let rec shokika ekimeiList kiten =
+    match ekimeiList with
+    | [] -> []
+    | e::es -> 
+        if e.Namae = kiten then
+            {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]}::es
+        else
+            e::(shokika es kiten)
+ 
+let rec ekimeiInsert ekimeiList ekimei =
+    match ekimeiList with
+    | [] -> [ekimei]
+    | e::es -> 
+        if ekimei.Kana = e.Kana then
+            ekimeiList
+        else if ekimei.Kana < e.Kana then
+            ekimei::ekimeiList
+        else
+            e::(ekimeiInsert es ekimei)
+
+let rec seiretsu ekimeiList =
+    match ekimeiList with
+    | [] -> []
+    | e::es -> ekimeiInsert (seiretsu es) e
+
+let koushin1 p q =
+    let kyori = getEkikanKyori p.Namae q.Namae globalEkikanList in
+    if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
+        q
+    else
+        match p.TemaeList with
+        | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
+        | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}

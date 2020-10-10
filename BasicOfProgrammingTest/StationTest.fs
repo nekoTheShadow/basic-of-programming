@@ -96,13 +96,13 @@ type ``問題13-6 koushin1はqの情報を更新する`` () =
     let ``pとqがつながっていなかったら何もしない``() =
         let p = {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]}
         let q = {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]}
-        Assert.Equal(q, (koushin1 p q globalEkikanList))
+        Assert.Equal(q, (koushin1 p q))
     
     [<Fact>]
     let ``pとqがつながっていなかったら距離とTemaeListが更新される``() =
         let p = {Namae="代々木上原"; SaitanKyori=1.0; TemaeList=["茗荷谷"]}
         let q = {Namae="代々木公園"; SaitanKyori=infinity; TemaeList=[]}
         let r = {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木上原"; "茗荷谷"]}
-        Assert.Equal(r, (koushin1 p q globalEkikanList))
+        Assert.Equal(r, (koushin1 p q))
 
 
