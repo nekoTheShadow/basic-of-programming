@@ -29,3 +29,8 @@ let ``問題13.2 personNamaeは名前のリストを作成する``() =
         {Name="3"; Height=1.6; Weight=60.0; Date="2020/01/01"; BloodType="B"};
     ]
     isEqual ["1"; "2"; "3"] (personNamae persons)
+
+let ``問題13.4 composeは2つの関数を合成する``() =
+    let time2 x = x*2
+    let add3 x = x+3
+    Assert.Equal(14, ((compose time2 add3) 4))
