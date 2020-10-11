@@ -393,7 +393,15 @@ let makeEkiList ekimeiList =
 
 let shokika ekimeiList kiten =
     List.map (fun e -> if e.Namae = kiten then {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]} else e) ekimeiList
- 
+
+let makeInitialEkiList ekimeiList kiten = 
+    List.map (fun ekimei -> 
+        if ekimei.Kanji = kiten then
+            {Namae=ekimei.Kanji; SaitanKyori=0.0; TemaeList=[]}
+        else
+            {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}
+    ) ekimeiList
+
 let rec ekimeiInsert ekimeiList ekimei =
     match ekimeiList with
     | [] -> [ekimei]

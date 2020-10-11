@@ -121,3 +121,17 @@ let ``問題13.7 koushinは未確定の駅のリストvに対して更新処理�
     ]
     isEqual expected (koushin p v)
 
+
+[<Fact>]
+let ``問題14.12 makeInitialEkiListは初期化されたEkiのリストを作成する``() =
+    let ekimeiList = [
+        {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
+        {Kanji="代々木公園"; Kana="よよぎこうえん"; Romaji="yoyogikouen"; Shozoku="千代田線"}; 
+        {Kanji="明治神宮前"; Kana="めいじじんぐうまえ"; Romaji="meijijinguumae"; Shozoku="千代田線"};  
+    ]
+    let expected = [
+        {Namae="代々木上原"; SaitanKyori=infinity; TemaeList=[]};
+        {Namae="代々木公園"; SaitanKyori=0.0; TemaeList=[]};
+        {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
+    ]
+    isEqual expected (makeInitialEkiList ekimeiList "代々木公園")
