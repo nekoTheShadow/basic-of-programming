@@ -18,3 +18,6 @@ let gakuseiSum gakuseiList = List.sumBy (fun gakusei -> gakusei.Tensuu) gakuseiL
 
 let f = fun x -> x*x-1
 let g = fun person -> person.Name
+
+let oneToN n = seq {1..n} |> Seq.sum
+let fac n = seq {1..n} |> Seq.fold (*) 1

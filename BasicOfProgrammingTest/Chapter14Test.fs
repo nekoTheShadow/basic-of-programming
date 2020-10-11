@@ -33,3 +33,18 @@ let ``問題14.4 gakuseiSumは学生全員の得点の合計を計算する`` ()
         {Namae="5"; Tensuu=5; Seiseki="B"};
     ]
     Assert.Equal(15, (gakuseiSum gakuesiList))
+
+
+[<Theory>]
+[<InlineData(1, 1)>]
+[<InlineData(5, 15)>]
+[<InlineData(10, 55)>]
+let ``問題14.15 oneToNは1からnまでの自然数の和を求める``(n, expected) =
+    Assert.Equal(expected, (oneToN n))
+
+[<Theory>]
+[<InlineData(1, 1)>]
+[<InlineData(5, 120)>]
+[<InlineData(10, 3628800)>]
+let ``問題14.16 facはn!を求める``(n, expected) =
+    Assert.Equal(expected, (fac n))
