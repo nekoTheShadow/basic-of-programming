@@ -32,4 +32,4 @@ let ``問題14.4 gakuseiSumは学生全員の得点の合計を計算する`` ()
         {Namae="4"; Tensuu=4; Seiseki="A"};
         {Namae="5"; Tensuu=5; Seiseki="B"};
     ]
-    Assert.Equal(2, (gakuseiSum gakuesiList))
+    Assert.Equal(15, (gakuseiSum gakuesiList))

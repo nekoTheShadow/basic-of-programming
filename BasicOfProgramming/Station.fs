@@ -416,14 +416,14 @@ let rec seiretsu ekimeiList =
     | [] -> []
     | e::es -> ekimeiInsert (seiretsu es) e
 
-let koushin1 p q =
-    let kyori = getEkikanKyori p.Namae q.Namae globalEkikanList in
-    if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
-        q
-    else
-        match p.TemaeList with
-        | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
-        | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
-
 let koushin p v =
+    let koushin1 p q =
+        let kyori = getEkikanKyori p.Namae q.Namae globalEkikanList in
+        if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
+            q
+        else
+            match p.TemaeList with
+            | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
+            | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
+    in
     List.map (koushin1 p) v
