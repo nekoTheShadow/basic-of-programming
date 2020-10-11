@@ -18,3 +18,7 @@ let ``問題14.2 countAは成績がAの学生の数を数える`` () =
         {Namae="5"; Tensuu=5; Seiseki="B"};
     ]
     Assert.Equal(2, (countA gakuesiList))
+
+[<Fact>]
+let ``問題14.3 concatはリストを前から順番に結合する`` () =
+    Assert.Equal("春夏秋冬", (concat ["春"; "夏"; "秋"; "冬"]))
