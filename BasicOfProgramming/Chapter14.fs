@@ -1,5 +1,7 @@
 module Chapter14
 
+open Person
+
 type Gakusei = {
     Namae: string;
     Tensuu: int;
@@ -13,3 +15,6 @@ let countA gakuseiList = List.length (List.filter (fun gakusei -> gakusei.Seisek
 let concat lst = List.fold ((+)) "" lst
 
 let gakuseiSum gakuseiList = List.sumBy (fun gakusei -> gakusei.Tensuu) gakuseiList
+
+let f = fun x -> x*x-1
+let g = fun person -> person.Name
