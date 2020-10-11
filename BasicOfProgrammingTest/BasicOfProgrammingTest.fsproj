@@ -16,6 +16,7 @@
     <Compile Include="Chapter10Test.fs" />
     <Compile Include="Chapter11Test.fs" />
     <Compile Include="Chapter13Test.fs" />
+    <Compile Include="Chapter14Test.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
