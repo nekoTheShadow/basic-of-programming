@@ -391,14 +391,8 @@ let rec kyoriWoHyoji romaji1 romaji2 ekimeiList ekikanList =
 let makeEkiList ekimeiList =
     List.map (fun ekimei -> {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}) ekimeiList
 
-let rec shokika ekimeiList kiten =
-    match ekimeiList with
-    | [] -> []
-    | e::es -> 
-        if e.Namae = kiten then
-            {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]}::es
-        else
-            e::(shokika es kiten)
+let shokika ekimeiList kiten =
+    List.map (fun e -> if e.Namae = kiten then {Namae=e.Namae; SaitanKyori=0.0; TemaeList=[]} else e) ekimeiList
  
 let rec ekimeiInsert ekimeiList ekimei =
     match ekimeiList with
