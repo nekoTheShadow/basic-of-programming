@@ -15,5 +15,6 @@
     <Compile Include="Chapter11.fs" />
     <Compile Include="Chapter13.fs" />
     <Compile Include="Chapter14.fs" />
+    <Compile Include="Chapter15.fs" />
   </ItemGroup>
 </Project>
