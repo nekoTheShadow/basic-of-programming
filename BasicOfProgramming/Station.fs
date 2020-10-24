@@ -397,7 +397,7 @@ let shokika ekimeiList kiten =
 let makeInitialEkiList ekimeiList kiten = 
     List.map (fun ekimei -> 
         if ekimei.Kanji = kiten then
-            {Namae=ekimei.Kanji; SaitanKyori=0.0; TemaeList=[]}
+            {Namae=ekimei.Kanji; SaitanKyori=0.0; TemaeList=[ekimei.Kanji]}
         else
             {Namae=ekimei.Kanji; SaitanKyori=infinity; TemaeList=[]}
     ) ekimeiList
@@ -444,3 +444,9 @@ let rec dijkstraMain ekiList ekikanList =
         let gs = koushin f fs ekikanList in
         f :: dijkstraMain gs ekikanList
 
+
+let dijkstra startRomaji endRomaji = 
+    let startKanji = romajiToKanji startRomaji (seiretsu globalEkimeiList) in
+    let endKanji = romajiToKanji endRomaji (seiretsu globalEkimeiList) in
+    let ekiList = dijkstraMain (makeInitialEkiList globalEkimeiList startKanji) globalEkikanList in
+    List.find (fun eki -> eki.Namae = endKanji) ekiList
