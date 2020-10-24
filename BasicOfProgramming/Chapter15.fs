@@ -16,3 +16,12 @@ let rec gcd m n =
         m
     else 
         gcd n (m % n)
+
+let prime n =
+    let rec seive lst =
+        match lst with
+        | [] -> []
+        | x::xs -> x::(seive (List.filter (fun y -> y % x <> 0) xs)) in
+    seq {2..n} |> Seq.toList |> seive
+ 
+ 
