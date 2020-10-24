@@ -110,14 +110,14 @@ let ``問題12.4 seirtsuはEkimeiリストをひらがなの順番に並べ替�
 
 [<Fact>]
 let ``問題13.7 koushinは未確定の駅のリストvに対して更新処理を行う``() =
-    let p = {Namae="代々木上原"; SaitanKyori=1.0; TemaeList=["茗荷谷"]}
+    let p = {Namae="代々木上原"; SaitanKyori=1.0; TemaeList=["代々木上原"; "茗荷谷"]}
     let v = [
         {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]}
         {Namae="代々木公園"; SaitanKyori=infinity; TemaeList=[]}
     ]
     let expected = [
         {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
-        {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木上原"; "茗荷谷"]};
+        {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木公園"; "代々木上原"; "茗荷谷"]};
     ]
     isEqual expected (koushin p v globalEkikanList)
 
@@ -144,4 +144,19 @@ let ``問題15.5 saitanWoBunriは最短距離が最小の駅とそれ以外の�
     let eki4 = {Namae="後楽園"; SaitanKyori = infinity; TemaeList = []}
     let (e, es) = saitanWoBunri [eki1; eki2; eki3; eki4]
     Assert.Equal(eki3, e)
-    isEqual [eki1, eki2, eki4], es
+    isEqual [eki4; eki2; eki1] es
+
+
+[<Fact>]
+let ``問題16.4 dijkstraMainはdijkstraのメインループ``() =
+    let eki1 = {Namae="池袋"; SaitanKyori = infinity; TemaeList = []}
+    let eki2 = {Namae="新大塚"; SaitanKyori = 1.2; TemaeList = ["新大塚"; "茗荷谷"]}
+    let eki3 = {Namae="茗荷谷"; SaitanKyori = 0.; TemaeList = ["茗荷谷"]}
+    let eki4 = {Namae="後楽園"; SaitanKyori = infinity; TemaeList = []}
+    let expected = [
+        {Namae = "茗荷谷"; SaitanKyori = 0.; TemaeList = ["茗荷谷"]}; 
+        {Namae = "新大塚"; SaitanKyori = 1.2; TemaeList = ["新大塚"; "茗荷谷"]}; 
+        {Namae = "後楽園"; SaitanKyori = 1.8; TemaeList = ["後楽園"; "茗荷谷"]}; 
+        {Namae = "池袋"; SaitanKyori = 3.; TemaeList = ["池袋"; "新大塚"; "茗荷谷"]}
+    ]
+    isEqual expected (dijkstraMain [eki1; eki2; eki3; eki4] globalEkikanList) 

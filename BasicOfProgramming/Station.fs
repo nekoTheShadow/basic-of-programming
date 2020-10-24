@@ -424,9 +424,7 @@ let koushin p v ekikanList =
         if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
             q
         else
-            match p.TemaeList with
-            | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
-            | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
+            {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=q.Namae::p.TemaeList}
     ) v
 
 
@@ -437,3 +435,12 @@ let saitanWoBunri lst =  match lst with
             (fun (e1, es) e2 -> if e1.SaitanKyori < e2.SaitanKyori then (e1, e2::es) else (e2, e1::es))
             (x, [])
             xs
+
+let rec dijkstraMain ekiList ekikanList = 
+    match ekiList with
+    | [] -> []
+    | e::es ->
+        let (f, fs) = saitanWoBunri (e::es) in
+        let gs = koushin f fs ekikanList in
+        f :: dijkstraMain gs ekikanList
+
