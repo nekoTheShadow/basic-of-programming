@@ -428,3 +428,12 @@ let koushin p v =
             | [] -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=[p.Namae]}
             | t::ts -> {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=p.Namae::p.TemaeList}
     ) v
+
+
+let saitanWoBunri lst =  match lst with 
+    | [] -> ({Namae=""; SaitanKyori=infinity; TemaeList=[]}, [])
+    | x::xs -> 
+        List.fold 
+            (fun (e1, es) e2 -> if e1.SaitanKyori < e2.SaitanKyori then (e1, e2::es) else (e2, e1::es))
+            (x, [])
+            xs

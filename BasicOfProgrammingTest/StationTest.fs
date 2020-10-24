@@ -135,3 +135,13 @@ let ``問題14.12 makeInitialEkiListは初期化されたEkiのリストを作�
         {Namae="明治神宮前"; SaitanKyori=infinity; TemaeList=[]};
     ]
     isEqual expected (makeInitialEkiList ekimeiList "代々木公園")
+
+[<Fact>]
+let ``問題15.5 saitanWoBunriは最短距離が最小の駅とそれ以外のリストをタプルにする。``() =
+    let eki1 = {Namae="池袋"; SaitanKyori = infinity; TemaeList = []}
+    let eki2 = {Namae="新大塚"; SaitanKyori = 1.2; TemaeList = ["新大塚"; "茗荷谷"]}
+    let eki3 = {Namae="茗荷谷"; SaitanKyori = 0.; TemaeList = ["茗荷谷"]}
+    let eki4 = {Namae="後楽園"; SaitanKyori = infinity; TemaeList = []}
+    let (e, es) = saitanWoBunri [eki1; eki2; eki3; eki4]
+    Assert.Equal(eki3, e)
+    isEqual [eki1, eki2, eki4], es
