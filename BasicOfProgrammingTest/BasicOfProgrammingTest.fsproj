@@ -8,8 +8,8 @@
   <ItemGroup>
     <Compile Include="TestUtil.fs" />
     <Compile Include="PersonTest.fs" />
-    <Compile Include="StationTest.fs" />
     <Compile Include="Chapter04Test.fs" />
+    <Compile Include="StationTest.fs" />
     <Compile Include="Chapter05Test.fs" />
     <Compile Include="Chapter07Test.fs" />
     <Compile Include="Chapter09Test.fs" />
@@ -18,6 +18,7 @@
     <Compile Include="Chapter13Test.fs" />
     <Compile Include="Chapter14Test.fs" />
     <Compile Include="Chapter15Test.fs" />
+    <Compile Include="Chapter16Test.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
