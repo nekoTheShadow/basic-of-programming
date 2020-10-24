@@ -418,9 +418,9 @@ let rec seiretsu ekimeiList =
     | [] -> []
     | e::es -> ekimeiInsert (seiretsu es) e
 
-let koushin p v =
+let koushin p v ekikanList =
     List.map (fun q ->
-        let kyori = getEkikanKyori p.Namae q.Namae globalEkikanList in
+        let kyori = getEkikanKyori p.Namae q.Namae ekikanList in
         if kyori = infinity || p.SaitanKyori + kyori >= q.SaitanKyori then
             q
         else
