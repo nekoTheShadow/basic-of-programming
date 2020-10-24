@@ -10,3 +10,9 @@ let rec quickSort lst =
     | x::xs -> quickSort (takeLess x xs)
                 @ takeEqual x lst
                 @ quickSort (takeGraeater x xs)
+
+let rec gcd m n =
+    if n = 0 then
+        m
+    else 
+        gcd n (m % n)
