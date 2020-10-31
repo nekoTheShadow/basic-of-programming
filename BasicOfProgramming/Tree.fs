@@ -31,3 +31,9 @@ let rec treeDepth tree =
     | Empty -> 0
     | Leaf(n) -> 0
     | Node(tree1, n, tree2) -> 1 + (max (treeDepth tree1) (treeDepth tree2))
+
+let rec sumTree tree = 
+    match tree with 
+    | Empty -> 0
+    | Leaf(n) -> n
+    | Node(tree1, n, tree2) -> (sumTree tree1) + n + (sumTree tree2)

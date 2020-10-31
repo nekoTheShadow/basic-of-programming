@@ -46,3 +46,10 @@ let ``問題17.8 treeDepthは木構造の深さを求める`` () =
     Assert.Equal(0, (treeDepth tree2))
     Assert.Equal(1, (treeDepth tree3))
     Assert.Equal(2, (treeDepth tree4))
+
+[<Fact>]
+let ``問題17.9 sumTreeは格納されている値を合計にする`` () =
+    Assert.Equal(0, (sumTree tree1))
+    Assert.Equal(3, (sumTree tree2))
+    Assert.Equal(7, (sumTree tree3))
+    Assert.Equal(15, (sumTree tree4))
