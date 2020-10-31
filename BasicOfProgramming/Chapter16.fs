@@ -8,7 +8,8 @@ let sumList lst =
     in f lst 0
 
 let rec foldLeft f init lst =
-    let rec g acc lst = match lst with
+    let rec g acc lst = 
+        match lst with
         | [] -> acc
         | x::xs -> g (f acc x) xs
     in g init lst

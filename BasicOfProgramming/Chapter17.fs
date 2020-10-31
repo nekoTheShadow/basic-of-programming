@@ -5,7 +5,8 @@ type Nengou = Meiji of int
             | Showa of int
             | Heisei of int
 
-let toSeireki nengou = match nengou with
+let toSeireki nengou = 
+  match nengou with
     | Meiji(n) -> n + 1867
     | Taisho(n) -> n + 1911
     | Showa(n) -> n + 1925
@@ -39,7 +40,8 @@ type Seiza = Aries
            | Aquarius
            | Pisces
 
-let seiza year = match year with 
+let seiza year = 
+  match year with 
   | January (hi) -> if hi <= 19 then Capricorn else Aquarius 
   | February (hi) -> if hi <= 18 then Aquarius else Pisces 
   | March (hi) -> if hi <= 20 then Pisces else Aries 
@@ -51,4 +53,5 @@ let seiza year = match year with
   | September (hi) -> if hi <= 22 then Virgo else Libra 
   | October (hi) -> if hi <= 23 then Libra else Scorpio 
   | November (hi) -> if hi <= 21 then Scorpio else Sagittarius 
-  | December (hi) -> if hi <= 21 then Sagittarius else Scorpio 
+  | December (hi) -> if hi <= 21 then Sagittarius else Scorpio
+   

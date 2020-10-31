@@ -428,7 +428,8 @@ let koushin p v ekikanList =
     ) v
 
 
-let saitanWoBunri lst =  match lst with 
+let saitanWoBunri lst =  
+    match lst with 
     | [] -> ({Namae=""; SaitanKyori=infinity; TemaeList=[]}, [])
     | x::xs -> 
         List.fold 

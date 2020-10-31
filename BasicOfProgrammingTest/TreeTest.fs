@@ -42,7 +42,7 @@ let ``問題17.7 treeLengthは節と葉の合計を計算する。`` () =
 
 [<Fact>]
 let ``問題17.8 treeDepthは木構造の深さを求める`` () =
-    Assert.Equal(0, (treeLength tree1))
-    Assert.Equal(0, (treeLength tree2))
-    Assert.Equal(1, (treeLength tree3))
-    Assert.Equal(2, (treeLength tree4))
+    Assert.Equal(0, (treeDepth tree1))
+    Assert.Equal(0, (treeDepth tree2))
+    Assert.Equal(1, (treeDepth tree3))
+    Assert.Equal(2, (treeDepth tree4))
