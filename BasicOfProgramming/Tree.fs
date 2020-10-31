@@ -18,3 +18,8 @@ let rec treeLength tree = match tree with
     | Empty -> 0
     | Leaf(n) -> 1
     | Node(tree1, n, tree2) -> (treeLength tree1) + 1 + (treeLength tree2)
+
+let rec treeDepth tree = match tree with
+    | Empty -> 0
+    | Leaf(n) -> 0
+    | Node(tree1, n, tree2) -> 1 + (max (treeDepth tree1) (treeDepth tree2))
