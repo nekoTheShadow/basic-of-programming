@@ -26,3 +26,16 @@ type Month = January of int
            | October of int
            | November of int
            | December of int
+
+type Seiza = Aries
+           | Taurus
+           | Gemini
+           | Cancer
+           | Leo
+           | Virgo
+           | Libra
+           | Scorpio
+           | Sagittarius
+           | Capricorn
+           | Aquarius
+           | Pisces
