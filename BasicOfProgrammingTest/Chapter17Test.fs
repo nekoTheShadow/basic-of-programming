@@ -9,3 +9,10 @@ let ``問題17.1 nenreiは誕生年と現在年から年齢を計算する。``(
     Assert.Equal(26, (nenrei (Heisei 6) (Heisei 32)))
     Assert.Equal(60, (nenrei (Showa 35) (Heisei 32)))
     Assert.Equal(56, (nenrei (Showa 39) (Heisei 32)))
+
+[<Fact>]
+let ``問題17.2 seizaはyear型から星座を求める。``() =
+    Assert.Equal(Gemini, (seiza (June 11)))
+    Assert.Equal(Cancer, (seiza (June 30)))
+    Assert.Equal(Virgo, (seiza (September 17)))
+    Assert.Equal(Libra, (seiza (October 7)))
