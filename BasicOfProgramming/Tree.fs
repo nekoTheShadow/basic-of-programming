@@ -13,3 +13,8 @@ let rec treeMap tree f = match tree with
     | Empty -> Empty
     | Leaf(n) -> Leaf(f(n))
     | Node(tree1, n, tree2) -> Node ((treeMap tree1 f), (f n), (treeMap tree2 f))
+
+let rec treeLength tree = match tree with
+    | Empty -> 0
+    | Leaf(n) -> 1
+    | Node(tree1, n, tree2) -> (treeLength tree1) + 1 + (treeLength tree2)
