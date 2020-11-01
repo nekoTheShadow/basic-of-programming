@@ -2,6 +2,15 @@ module Station2
 
 open Station
 
+let saitanWoBunri eki lst =  
+    if List.isEmpty lst then
+         (eki, [])
+    else 
+        List.fold 
+            (fun (e1, es) e2 -> if e1.SaitanKyori < e2.SaitanKyori then (e1, e2::es) else (e2, e1::es))
+            (eki, [])
+            lst
+
 let rec getEkikanKyori name1 name2 ekikanTree =
     match ekikanTree with
     | Empty -> infinity
@@ -28,7 +37,7 @@ let rec dijkstraMain ekiList ekikanTree =
     match ekiList with
     | [] -> []
     | e::es ->
-        let (f, fs) = saitanWoBunri (e::es) in
+        let (f, fs) = saitanWoBunri e es in
         let gs = koushin f fs ekikanTree in
         f :: dijkstraMain gs ekikanTree
 

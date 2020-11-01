@@ -3,6 +3,7 @@ module Station2Test
 open Xunit
 open Station
 open Station2
+open TestUtil
 
 type ``問題17-14 getEkikanKyoriは駅間リストをもとにふたつの駅の距離を求める`` () =
     [<Fact>]
@@ -24,3 +25,13 @@ let ``問題17.15 dijkstraは始点(ローマ字)から終点(ローマ字)ま�
     let expected2 = {Namae = "目黒"; SaitanKyori = 12.7000000000000028; TemaeList = ["目黒"; "白金台"; "白金高輪"; "麻布十番"; "六本木一丁目"; "溜池山王"; "永田町"; "麹町"; "市ヶ谷"; "飯田橋"; "後楽園"; "茗荷谷"]} 
     Assert.Equal(expected1, (dijkstra "shibuya" "gokokuji"))
     Assert.Equal(expected2, (dijkstra "myogadani" "meguro"))
+
+[<Fact>]
+let ``問題17.16 saitanWoBunriは最短距離が最小の駅とそれ以外のリストをタプルにする。``() =
+    let eki1 = {Namae="池袋"; SaitanKyori = infinity; TemaeList = []}
+    let eki2 = {Namae="新大塚"; SaitanKyori = 1.2; TemaeList = ["新大塚"; "茗荷谷"]}
+    let eki3 = {Namae="茗荷谷"; SaitanKyori = 0.; TemaeList = ["茗荷谷"]}
+    let eki4 = {Namae="後楽園"; SaitanKyori = infinity; TemaeList = []}
+    let (e, es) = saitanWoBunri eki1 [eki2; eki3; eki4]
+    Assert.Equal(eki3, e)
+    isEqual [eki4; eki2; eki1] es
