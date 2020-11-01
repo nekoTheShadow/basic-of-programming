@@ -54,4 +54,5 @@ let seiza year =
   | October (hi) -> if hi <= 23 then Libra else Scorpio 
   | November (hi) -> if hi <= 21 then Scorpio else Sagittarius 
   | December (hi) -> if hi <= 21 then Sagittarius else Scorpio
-   
+
+let minimum x xs = List.fold (min) x xs

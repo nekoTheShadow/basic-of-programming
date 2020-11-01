@@ -16,3 +16,10 @@ let ``問題17.2 seizaはyear型から星座を求める。``() =
     Assert.Equal(Cancer, (seiza (June 30)))
     Assert.Equal(Virgo, (seiza (September 17)))
     Assert.Equal(Libra, (seiza (October 7)))
+
+[<Fact>]
+let ``問題17.17 minimumはリストの最小値を求める。``() =
+    Assert.Equal(3, minimum 3 [])
+    Assert.Equal(1, minimum 1 [2])
+    Assert.Equal(2, minimum 3 [2])
+    Assert.Equal(1, minimum 3 [2; 6; 4; 1; 8])
