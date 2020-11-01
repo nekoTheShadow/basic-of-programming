@@ -21,6 +21,9 @@ type Eki = {
     TemaeList : string list;
 }
 
+type EkikanTree = Empty
+                | Node of EkikanTree * string * (string * float) list * EkikanTree
+
 // http://pllab.is.ocha.ac.jp/~asai/book-data/ex09_9.ml
 let globalEkimeiList = [ 
     {Kanji="代々木上原"; Kana="よよぎうえはら"; Romaji="yoyogiuehara"; Shozoku="千代田線"}; 
