@@ -173,3 +173,19 @@ let ``問題17.11 assocは連想リストを検索する``() =
     let d = [("新大塚", 1.2); ("後楽園", 1.8)]
     Assert.Equal(1.8, (assoc "後楽園" d))
     Assert.Equal(infinity, (assoc "池袋" d))
+
+[<Fact>]
+let ``問題17.12 EkikanTreeにEkikanを挿入する``() =
+    let ekikan1 = {Kiten="池袋"; Shuten="新大塚"; Keiyu="丸ノ内線"; Kyori=1.8; Jikan=3}
+    let ekikan2 = {Kiten="新大塚"; Shuten="茗荷谷"; Keiyu="丸ノ内線"; Kyori=1.2; Jikan=2}
+    let ekikan3 = {Kiten="茗荷谷"; Shuten="後楽園"; Keiyu="丸ノ内線"; Kyori=1.8; Jikan=2}
+
+    let tree1 = insertEkikan Empty ekikan1 
+    let tree2 = insertEkikan tree1 ekikan2
+    let tree3 = insertEkikan tree2 ekikan3
+    let expected1 = Node(Node(Empty, "新大塚", [("池袋", 1.8)], Empty), "池袋", [("新大塚", 1.8)], Empty)
+    let expected2 = Node(Node(Empty, "新大塚", [("茗荷谷", 1.2); ("池袋", 1.8)], Empty), "池袋", [("新大塚", 1.8)], Node(Empty, "茗荷谷", [("新大塚", 1.2)], Empty))
+    let expected3 = Node(Node(Node (Empty, "後楽園", [("茗荷谷", 1.8)], Empty), "新大塚", [("茗荷谷", 1.2); ("池袋", 1.8)], Empty), "池袋", [("新大塚", 1.8)], Node(Empty, "茗荷谷", [("後楽園", 1.8); ("新大塚", 1.2)], Empty))
+    Assert.Equal(expected1, tree1)
+    Assert.Equal(expected2, tree2)
+    Assert.Equal(expected3, tree3)

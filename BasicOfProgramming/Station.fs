@@ -459,3 +459,19 @@ let rec assoc key d =
     match d with
     | [] -> infinity
     | (k, v)::e -> if k = key then v else (assoc key e)
+
+let insertEkikan ekikanTree ekikan =
+    let a = {Kiten=ekikan.Kiten; Shuten=ekikan.Shuten; Keiyu=ekikan.Keiyu; Kyori=ekikan.Kyori; Jikan=ekikan.Jikan} in 
+    let b = {Kiten=ekikan.Shuten; Shuten=ekikan.Kiten; Keiyu=ekikan.Keiyu; Kyori=ekikan.Kyori; Jikan=ekikan.Jikan} in 
+    let rec insert ekikanTree ekikan = 
+        match ekikanTree with
+        | Empty -> Node (Empty, ekikan.Kiten, [(ekikan.Shuten, ekikan.Kyori)], Empty) 
+        | Node(left, ekimei, lst, right) ->
+            if ekikan.Kiten < ekimei then
+                Node (insert left ekikan, ekimei, lst, right)
+            else if ekikan.Kiten > ekimei then
+                Node (left, ekimei, lst, insert right ekikan)
+            else
+                Node (left, ekimei, (ekikan.Shuten, ekikan.Kyori) :: lst, right)
+    in
+    insert (insert ekikanTree a) b
