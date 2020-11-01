@@ -475,3 +475,6 @@ let insertEkikan ekikanTree ekikan =
                 Node (left, ekimei, (ekikan.Shuten, ekikan.Kyori) :: lst, right)
     in
     insert (insert ekikanTree a) b
+
+let insertsEkikan ekikanTree ekikanList =
+    List.fold (insertEkikan) ekikanTree ekikanList

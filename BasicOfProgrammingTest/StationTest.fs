@@ -189,3 +189,13 @@ let ``問題17.12 EkikanTreeにEkikanを挿入する``() =
     Assert.Equal(expected1, tree1)
     Assert.Equal(expected2, tree2)
     Assert.Equal(expected3, tree3)
+
+[<Fact>]
+let ``問題17.13 insertsEkikanはEkikanTreeにすべてのEkikanを挿入する。``() =
+    let ekikanList = [
+        {Kiten="池袋"; Shuten="新大塚"; Keiyu="丸ノ内線"; Kyori=1.8; Jikan=3};
+        {Kiten="新大塚"; Shuten="茗荷谷"; Keiyu="丸ノ内線"; Kyori=1.2; Jikan=2};
+        {Kiten="茗荷谷"; Shuten="後楽園"; Keiyu="丸ノ内線"; Kyori=1.8; Jikan=2}
+    ]
+    let expected = Node(Node(Node (Empty, "後楽園", [("茗荷谷", 1.8)], Empty), "新大塚", [("茗荷谷", 1.2); ("池袋", 1.8)], Empty), "池袋", [("新大塚", 1.8)], Node(Empty, "茗荷谷", [("後楽園", 1.8); ("新大塚", 1.2)], Empty))
+    Assert.Equal(expected, (insertsEkikan Empty ekikanList))
