@@ -454,3 +454,8 @@ let dijkstra startRomaji endRomaji =
     let endKanji = romajiToKanji endRomaji (seiretsu globalEkimeiList) in
     let ekiList = dijkstraMain (makeInitialEkiList globalEkimeiList startKanji) globalEkikanList in
     List.find (fun eki -> eki.Namae = endKanji) ekiList
+
+let rec assoc key d = 
+    match d with
+    | [] -> infinity
+    | (k, v)::e -> if k = key then v else (assoc key e)
