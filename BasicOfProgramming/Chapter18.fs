@@ -8,3 +8,14 @@ let rec countUrikireYasai yaoyaList yasaiList =
             countUrikireYasai yaoyaList ys
         else
             countUrikireYasai yaoyaList ys + 1
+
+exception NotFoundException
+
+let rec assoc key d = 
+    match d with
+    | [] -> raise NotFoundException
+    | (k, v)::es -> 
+        if k = key then
+            v
+        else
+            assoc key es
