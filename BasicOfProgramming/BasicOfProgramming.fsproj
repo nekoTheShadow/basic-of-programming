@@ -4,12 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Station.fs" />
-    <Compile Include="Station2.fs" />
-    <Compile Include="Station3.fs" />
     <Compile Include="Person.fs" />
     <Compile Include="Tree.fs" />
     <Compile Include="RedBlackTree.fs" />
+    <Compile Include="Station.fs" />
+    <Compile Include="Station2.fs" />
+    <Compile Include="Station3.fs" />
+    <Compile Include="Station4.fs" />
     <Compile Include="Chapter04.fs" />
     <Compile Include="Chapter05.fs" />
     <Compile Include="Chapter07.fs" />

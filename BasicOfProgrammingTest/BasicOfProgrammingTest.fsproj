@@ -14,6 +14,7 @@
     <Compile Include="StationTest.fs" />
     <Compile Include="Station2Test.fs" />
     <Compile Include="Station3Test.fs" />
+    <Compile Include="Station4Test.fs" />
     <Compile Include="Chapter05Test.fs" />
     <Compile Include="Chapter07Test.fs" />
     <Compile Include="Chapter09Test.fs" />
