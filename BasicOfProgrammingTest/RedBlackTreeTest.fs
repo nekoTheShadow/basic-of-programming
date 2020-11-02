@@ -2,6 +2,7 @@ module RedBlackTreeTest
 
 open Xunit
 open RedBlackTree
+open System
 
 [<Fact>]
 let ``問題20.2 balanceは赤黒木のバランスを調整する。``() =
@@ -26,3 +27,11 @@ let ``問題20.3 insertは赤黒木に値を挿入する。``() =
     Assert.Equal(Node (Empty, 10, "x", Black, Empty), rbTree1)
     Assert.Equal(Node (Empty, 10, "x", Black, Node (Empty, 13, "y", Red, Empty)), rbTree2)
     Assert.Equal(Node (Node (Empty, 10, "x", Black, Empty), 13, "y", Black, Node (Empty, 15, "z", Black, Empty)), rbTree3)
+
+[<Fact>]
+let ``問題20.4 searchは赤黒木から値を取り出す``() =
+    let rbTree = List.fold (fun tree (k, v) -> insert tree k v) Empty [(10, "x"); (13, "y"); (15, "z")]
+    Assert.Equal("x", search rbTree 10)
+    Assert.Equal("y", search rbTree 13)
+    Assert.Equal("z", search rbTree 15)
+    Assert.Throws<NotFoundException> (Action(fun _ -> search rbTree 14 |> ignore))

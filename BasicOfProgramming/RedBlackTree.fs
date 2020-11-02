@@ -1,5 +1,7 @@
 module RedBlackTree
 
+exception NotFoundException
+
 type Color = Red | Black
 
 type ('a, 'b) RbTree = 
@@ -29,4 +31,15 @@ let insert rbTree key value =
   in 
   match f rbTree with
   | Empty -> failwith "ありえない"
-  | Node (left, k, v, color, right) -> Node (left, k, v, Black, right) 
+  | Node (left, k, v, color, right) -> Node (left, k, v, Black, right)
+
+let rec search rbTree key =
+  match rbTree with
+  | Empty -> raise NotFoundException
+  | Node (left, k, v, color, right) -> 
+    if k = key then
+      v
+    else if key < k then
+      search left key
+    else
+      search right key
