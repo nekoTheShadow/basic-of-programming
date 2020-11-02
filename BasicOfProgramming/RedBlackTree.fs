@@ -14,3 +14,19 @@ let balance rbTree =
     | Node (a, xa, xb, Black, Node (b, ya, yb, Red, Node (c, za, zb, Red, d))) 
         -> Node (Node (a, xa, xb, Black, b), ya, yb, Red, Node (c, za, zb, Black, d)) 
     | _ -> rbTree 
+
+let insert rbTree key value =
+  let rec f rbTree = 
+    match rbTree with
+    | Empty -> Node(Empty, key, value, Red, Empty)
+    | Node (left, k, v, color, right) -> 
+      if k = key then
+        Node (left, key, value, color, right) 
+      else if key < k then
+        balance (Node (f left, k, v, color, right))
+      else
+        balance (Node (left, k, v, color, f right))
+  in 
+  match f rbTree with
+  | Empty -> failwith "ありえない"
+  | Node (left, k, v, color, right) -> Node (left, k, v, Black, right) 
