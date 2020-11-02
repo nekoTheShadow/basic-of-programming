@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="Station.fs" />
     <Compile Include="Station2.fs" />
+    <Compile Include="Station3.fs" />
     <Compile Include="Person.fs" />
     <Compile Include="Tree.fs" />
     <Compile Include="Chapter04.fs" />
