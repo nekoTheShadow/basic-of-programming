@@ -15,3 +15,7 @@ let nakata = {Name="中田"; Height=1.8; Weight=40.0; Date="2020/03/01"; BloodTy
 let ketsuekiHyoji {Name=name; Height=height; Weight=weight; Date=date; BloodType=bloodtype} =
     sprintf "%sさんの血液型は%s型です" name bloodtype
 
+let rec firstA persons = 
+    match persons with
+    | [] -> option.None
+    | person::ps -> if person.BloodType = "A" then option.Some(person) else firstA ps

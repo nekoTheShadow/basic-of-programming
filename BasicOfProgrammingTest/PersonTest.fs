@@ -10,3 +10,22 @@ open Person
 let ``問題8.4 ketsuekiHyojiは「XXさんの血液型はX型です」という文字列を作成する`` (name, height, weight, date, bloodtype, expected) =
     let actual = ketsuekiHyoji {Name=name; Height=height; Weight=weight; Date=date; BloodType=bloodtype}
     Assert.Equal(expected, actual)
+
+type ``問題18-1 firstAはPersonリストから最初のA型のPersonを返す``() =
+    [<Fact>]
+    let ``リストにA型が含まれていない場合はNoneを返す``() =
+        let persons = [
+            {Name="O"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="O"}; 
+            {Name="B"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="B"}; 
+        ]
+        Assert.Equal(None, firstA persons)
+    
+    [<Fact>]
+    let ``リストに複数のA型の人間が含まれていても最初の人間を求める。``() =
+        let persons = [
+            {Name="O"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="O"}; 
+            {Name="A1"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="A"}; 
+            {Name="B"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="B"}; 
+            {Name="A2"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="A"}; 
+        ]
+        Assert.Equal(Some({Name="A1"; Height=1.7; Weight=60.0; Date="2020/11/02"; BloodType="A"}), firstA persons)
