@@ -30,3 +30,16 @@ let ``問題18.5 koushinは未確定の駅のリストvに対して更新処理�
         {Namae="代々木公園"; SaitanKyori=2.0; TemaeList=["代々木公園"; "代々木上原"; "茗荷谷"]};
     ]
     isEqual expected (koushin p v (insertsEkikan Empty globalEkikanList))
+
+type ``問題18-6 romajiToKanjiは駅名リストをもとにローマ字表記から漢字表記に変換する`` () = 
+    [<Fact>]
+    let ``変換できない場合は例外を投げる`` ()= 
+        Assert.Throws<NoSuchStationException>(System.Action(fun _ -> romajiToKanji "xxx" globalEkimeiList |> ignore))
+        try 
+            romajiToKanji "xxx" globalEkimeiList |> ignore
+        with NoSuchStationException (n) ->
+            Assert.Equal("xxx", n)
+    
+    [<Fact>]
+    let ``変換できる場合は漢字表記を返す`` ()= 
+        Assert.Equal("茗荷谷", (romajiToKanji "myogadani" globalEkimeiList))

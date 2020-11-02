@@ -3,6 +3,7 @@ module Station3
 open Station
 
 exception NotFoundException
+exception NoSuchStationException of string
 
 let rec assoc key d = 
     match d with
@@ -30,3 +31,8 @@ let koushin p v ekikanTree =
                 {Namae=q.Namae; SaitanKyori=p.SaitanKyori + kyori; TemaeList=q.Namae::p.TemaeList}
         with NotFoundException -> q
     ) v
+
+let rec romajiToKanji romaji ekimeiList =
+    match ekimeiList with
+    | [] -> raise (NoSuchStationException romaji)
+    | e::es -> if e.Romaji = romaji then e.Kanji else (romajiToKanji romaji es)
