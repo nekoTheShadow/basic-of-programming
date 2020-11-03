@@ -19,6 +19,7 @@ let rec gcd m n =
 
 let prime n =
     let rec seive lst =
+        printfn "[問題21.2] List.length lst ---> %d" (List.length lst)
         match lst with
         | [] -> []
         | x::xs -> x::(seive (List.filter (fun y -> y % x <> 0) xs)) in
