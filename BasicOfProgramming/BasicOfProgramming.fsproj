@@ -7,6 +7,7 @@
     <Compile Include="Person.fs" />
     <Compile Include="Tree.fs" />
     <Compile Include="RedBlackTree.fs" />
+    <Compile Include="Heap.fs" />
     <Compile Include="Station.fs" />
     <Compile Include="Station2.fs" />
     <Compile Include="Station3.fs" />
