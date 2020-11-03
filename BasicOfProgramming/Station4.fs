@@ -39,9 +39,4 @@ let dijkstra startRomaji endRomaji =
     let startKanji = romajiToKanji startRomaji (seiretsu globalEkimeiList) in
     let endKanji = romajiToKanji endRomaji (seiretsu globalEkimeiList) in
     let ekiList = dijkstraMain (makeInitialEkiList globalEkimeiList startKanji) (List.fold (insertEkikan) Empty globalEkikanList) in
-    let eki = List.find (fun eki -> eki.Namae = endKanji) ekiList in
-    printEki eki
-    eki
-
-
-    
+    List.find (fun eki -> eki.Namae = endKanji) ekiList
