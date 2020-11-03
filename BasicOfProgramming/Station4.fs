@@ -32,8 +32,16 @@ let rec dijkstraMain ekiList ekikanTree =
         let gs = koushin f fs ekikanTree in
         f :: dijkstraMain gs ekikanTree
 
+let printEki eki =
+    printfn "%s (%f km)" (List.rev eki.TemaeList |> String.concat " ") eki.SaitanKyori in
+
 let dijkstra startRomaji endRomaji = 
     let startKanji = romajiToKanji startRomaji (seiretsu globalEkimeiList) in
     let endKanji = romajiToKanji endRomaji (seiretsu globalEkimeiList) in
     let ekiList = dijkstraMain (makeInitialEkiList globalEkimeiList startKanji) (List.fold (insertEkikan) Empty globalEkikanList) in
-    List.find (fun eki -> eki.Namae = endKanji) ekiList
+    let eki = List.find (fun eki -> eki.Namae = endKanji) ekiList in
+    printEki eki
+    eki
+
+
+    
