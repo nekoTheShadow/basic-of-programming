@@ -3,7 +3,7 @@ module Heap
 let length = ref 0
 
 let create size =
-    ref (Array.create size (infinity, ""))
+    ref (Array.create size (infinity, Unchecked.defaultof<'b>))
 
 let rec upheap heap ptr =
     if ptr = 0 then
@@ -11,7 +11,7 @@ let rec upheap heap ptr =
     else 
         let (key1, value1) = Array.get !heap ptr in
         let (key2, value2) = Array.get !heap ((ptr-1)/2) in
-        if key2 <= key1 then
+        if key2 < key1 then
             heap
         else
             Array.set !heap ptr (key2, value2)
@@ -23,18 +23,22 @@ let rec downheap heap ptr =
         heap
     else 
         let (key1, value1) = Array.get !heap ptr in
-        let (key2, value2) = if 2*ptr+1 < Array.length !heap then Array.get !heap (2*ptr+1) else (infinity, "") in
-        let (key3, value3) = if 2*ptr+2 < Array.length !heap then Array.get !heap (2*ptr+2) else (infinity, "") in
-        if key2 < key1 && key2 < key3 then
-            Array.set !heap (2*ptr+1) (key1, value1)
-            Array.set !heap ptr (key2, value2)
-            downheap heap (2*ptr+1)
-        else if key3 < key1 && key3 < key2 then
-            Array.set !heap (2*ptr+2) (key1, value1)
-            Array.set !heap ptr (key3, value3)
-            downheap heap (2*ptr+2)
+        let (key2, value2) = if 2*ptr+1 < Array.length !heap then Array.get !heap (2*ptr+1) else (infinity, Unchecked.defaultof<'b>) in
+        let (key3, value3) = if 2*ptr+2 < Array.length !heap then Array.get !heap (2*ptr+2) else (infinity, Unchecked.defaultof<'b>) in
+        if key2 < key3 then
+            if key2 < key1 then
+                Array.set !heap (2*ptr+1) (key1, value1)
+                Array.set !heap ptr (key2, value2)
+                downheap heap (2*ptr+1)
+            else
+                heap
         else
-            heap
+            if key3 < key1 then
+                Array.set !heap (2*ptr+2) (key1, value1)
+                Array.set !heap ptr (key3, value3)
+                downheap heap (2*ptr+2)
+            else 
+                heap
 
 let insert heap key value =
     Array.set !heap !length (key, value)
@@ -44,14 +48,13 @@ let insert heap key value =
 
 let splitTop heap = 
     let (key, value) = Array.get !heap 0 in
-    Array.set !heap 0 (infinity, "")
+    Array.set !heap 0 (infinity, Unchecked.defaultof<'a>)
     downheap heap 0 |> ignore
     length := !length - 1
     (key, value)
 
 let heapSort lst =
-    let heap = List.fold (fun heap v -> insert heap -v "") (create (List.length lst)) lst in
-    printfn "%A" heap
+    let heap = List.fold (fun heap v -> insert heap -v v) (create (List.length lst)) lst in
     let rec f n acc =
         if n = 0 then
             acc
