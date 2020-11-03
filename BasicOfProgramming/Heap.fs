@@ -23,8 +23,8 @@ let rec downheap heap ptr =
         heap
     else 
         let (key1, value1) = Array.get !heap ptr in
-        let (key2, value2) = Array.get !heap (2*ptr+1) in
-        let (key3, value3) = Array.get !heap (2*ptr+2) in
+        let (key2, value2) = if 2*ptr+1 < Array.length !heap then Array.get !heap (2*ptr+1) else (infinity, "") in
+        let (key3, value3) = if 2*ptr+2 < Array.length !heap then Array.get !heap (2*ptr+2) else (infinity, "") in
         if key2 < key1 && key2 < key3 then
             Array.set !heap (2*ptr+1) (key1, value1)
             Array.set !heap ptr (key2, value2)
@@ -40,6 +40,7 @@ let insert heap key value =
     Array.set !heap !length (key, value)
     upheap heap !length |> ignore
     length := !length + 1
+    heap
 
 let splitTop heap = 
     let (key, value) = Array.get !heap 0 in
@@ -47,3 +48,13 @@ let splitTop heap =
     downheap heap 0 |> ignore
     length := !length - 1
     (key, value)
+
+let heapSort lst =
+    let heap = List.fold (fun heap v -> insert heap -v "") (create (List.length lst)) lst in
+    printfn "%A" heap
+    let rec f n acc =
+        if n = 0 then
+            acc
+        else
+            let (k, v) = splitTop heap in f (n - 1) (-k::acc)
+    in f (List.length lst) []
